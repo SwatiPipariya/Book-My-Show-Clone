@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import HeroSlider from "react-slick"
+import { NextArrow, PrevArrow } from './ArrowComponent';
 
 const HeroCarousel = () => {
   const [images] = useState([
@@ -39,22 +40,54 @@ const HeroCarousel = () => {
     },
   ]);
 
-  
+  const settingsLG = {
+    dots: true,
+    arrows: true,
+    slidesToShow: 3,
+    infinite: true,
+    speed: 500,
+    autoplay: true,
+    slideToScroll: 1,
+    cssEase: "linear",
+    nextArrow:< NextArrow/>,
+    prevArrow: <PrevArrow/>,
+  }
+  const settings = {
+    dots: true,
+    arrows: true,
+    slidesToShow: 3,
+    infinite: true,
+    speed: 500,
+    autoplay: true,
+    slideToScroll: 1,
+    cssEase: "linear",
+    nextArrow: <NextArrow/>,
+    prevArrow: <PrevArrow/>,
+  };
 
   return (
     <>
+    {/* For Smaller And Medium Screen Sizes */}
     <div className='lg:hidden'>
-       <HeroSlider />
-       {
-         images.map((image) => {
+       <HeroSlider {...settings}>
+       {images.map((image) => {
           <div className='w-full h-56 md:h-80 py-3'>
-             <img src='' alt='Hero Banner' className='w-full h-full rounded-md object-cover' />
+             <img src={`https://image.tmdb.org/t/p/original${images.backdrop_path}`} alt='Hero Banner' className='w-full h-full rounded-md object-cover' />
           </div>
          })
        }
+       </HeroSlider>
     </div>
+    {/* For Large Screen Sizes */}
     <div className='hidden lg:block'>
-
+    <HeroSlider {...settingsLG}>
+       {images.map((image) => {
+          <div className='w-full h-96 px-2 py-3'>
+             <img src={`https://image.tmdb.org/t/p/original${images.backdrop_path}`} alt='Hero Banner' className='w-full h-full rounded-md object-cover' />
+          </div>
+         })
+       } 
+       </HeroSlider>
     </div>
     
     </>

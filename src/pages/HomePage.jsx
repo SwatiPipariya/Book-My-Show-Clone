@@ -46,6 +46,7 @@ const HomePage = () => {
           isDark={true}
         />
         </div>
+        </div>
         <div className='container mx-auto px-4 md:px-12 my-8'>
           <PosterSlider
             title="Online Streaming Events"
@@ -53,7 +54,7 @@ const HomePage = () => {
             posters={onlineStreamEvents}
             isDark={false}
           />
-        </div>
+       
       </div>
     </>
   )
