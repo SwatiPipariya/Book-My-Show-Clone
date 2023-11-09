@@ -22,30 +22,32 @@ function NavSm() {
 function NavMd() {
   return (
     <>
+      <div className='w-10 h-10'>
+        <img src='' alt='' className='w-full h-full' />
+      </div>
       <div className='w-full items-center gap-3 bg-white px-3 py-1 rounded-md'>
         <BiSearch />
         <input type='search' className='w-full bg-transparent border-none focus:outline-none' />
       </div>
     </>
   )
-
 }
 
 function NavLg() {
   return (
     <>
-    <div className='container flex mx-autopx-4 items-center justify-between'>
-      <div className='flex items-center w-1/2 gap-3 '>
-         <div className='w-10 h-10'>
-          <img src='' alt='' className='w-full h-full'/>
-         </div>
-         <div className='w-full flex-center gap-3 bg-white px-3 py-1 rounded-md'>
-          <BiSearch />
-          <input type='search' className='w-full bg-transparent border-none focus: outline-none' 
-          placeholder="Search for movies, events, plays, sports and activities" />
-         </div>
+      <div className='container flex mx-auto px-4 items-center justify-between'>
+        <div className='flex items-center w-1/2 gap-3 '>
+          <div className='w-10 h-10'>
+            <img src='' alt='' className='w-full h-full' />
+          </div>
+          <div className='w-full flex items-center gap-3 bg-white px-3 py-1 rounded-md'>
+            <BiSearch />
+            <input type='search' className='w-full bg-transparent border-none focus: outline-none'
+              placeholder="Search for movies, events, plays, sports and activities" />
+          </div>
+        </div>
       </div>
-    </div>
     </>
   )
 }
@@ -55,9 +57,22 @@ function NavLg() {
 const Navbar = () => {
   return (
     <>
-    {/* <NavMd />
-    <NavMd />
-    <NavSm /> */}
+      <nav className='bg-darkBackground-700 px-4 py-3'>
+        {/* Small Screen NavBar */}
+        <div className='md:hidden '>
+          <NavSm />
+        </div>
+
+        {/* Medium Screen Size */}
+        <div className='hidden lg:hidden md:flex'>
+          <NavMd />
+        </div>
+
+        {/* Large Screen Size */}
+        <div className='hidden md:hidden lg:flex'>
+          <NavLg />
+        </div>
+      </nav>
     </>
   )
 }
