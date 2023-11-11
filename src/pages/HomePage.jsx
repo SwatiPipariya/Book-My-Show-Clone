@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import axios from 'axios'
 
 //Layout HOC
 import DefaultLayoutHoc from '../layout/DefaultLayout'
@@ -13,7 +14,20 @@ const HomePage = () => {
   const [recommmendedMovies, setRecommmendedMovies] = useState([]);
   const [premierMovies, setPremierMovies] = useState([]);
   const [onlineStreamEvents, setOnlineStreamEvnts] = useState([])
+   
+  // get.apiName('/', async () => {})
 
+  useEffect(() => {
+    const requestTopRatedMovies = async () => {
+      const getTopRatedMovies = await axios.get(
+        // "https://api.themoviedb.org/3/movie/550?api_key=79f5da683028d4d8f06dfcaf2073231a"
+        "https://api.themoviedb.org/3/movie/top_rated?api_key=79f5da683028d4d8f06dfcaf2073231a"
+      ); 
+      setRecommmendedMovies(getTopRatedMovies.data.results);
+    };
+    requestTopRatedMovies();
+  }, []);
+  
   return (
     <>
       <HeroCarousel />
@@ -24,7 +38,7 @@ const HomePage = () => {
         </h1>
         <EntertainmentCardComponent />
       </div>
-
+       
       <div className='container mx-auto px-4 md:px-12 my-8'>
         <PosterSlider
           title="Recommended Movies"
@@ -37,7 +51,7 @@ const HomePage = () => {
         <div className='container mx-auto px-4 md:px-12 my-8 flex flex-col gap-3' >
           <div className='hidden md:flex'>
             {/* <img src='https://th.bing.com/th?id=OIP.SOrqtMs1uYMm4lpxR5pdGQHaFO&w=297&h=210&c=8&rs=1&qlt=90&o=6&dpr=1.5&pid=3.1&rm=2' className='' alt='rupay' /> */}
-             <img src='' alt='rupay_pic' />
+             <img src='' alt='rupay_pic' className='w-full h-full'/>
         </div>
         <PosterSlider
           title="Premiers"
