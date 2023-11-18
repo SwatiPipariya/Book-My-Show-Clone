@@ -7,7 +7,7 @@ import Slider from 'react-slick'
 import { FaCcVisa, FaCcApplePay } from "react-icons/fa"
 import PosterSlider from '../components/PosterSlider/PosterSliderComponent'
 import MovieHero from '../components/MovieHero/MovieHeroComponent'
-
+import Cast from '../components/Cast/CastComponent'
 
 const MoviePage = () => {
   const { id } = useParams()
@@ -50,13 +50,76 @@ const MoviePage = () => {
     };
     requestMovie()
   }, [id]);
-  
-  const settingsCast = {};
 
-  const settings = {};
+  const settingsCast = {
+    infinte: false,
+    speed: 500,
+    slidesToShow: 6,
+    slidesToScroll: 4,
+    initialSlide: 0,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 4,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 5,
+          slidesToScroll: 2,
+          initialSlide: 3,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 1,
+        },
+      },
+    ]
+  };
 
-  return (
-    <>
+
+const settings = {
+  infinte: false,
+  speed: 500,
+  slidesToShow: 4,
+  slidesToScroll: 4,
+  initialSlide: 0,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+      },
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2,
+        initialSlide: 3,
+      },
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 1,
+        initialSlide: 2,
+      },
+    },
+  ]
+};
+
+return (
+  <>
     <MovieHero />
     <div className='my-12 container px-4 lg-ml-20 lg:w-2/1'>
       <div className='flex flex-col items-start gap-3'>
@@ -108,21 +171,37 @@ const MoviePage = () => {
         />
       </div>
 
-      {/* Recommended Movies Sliders*/}
+      <div className='my-8'>
+        <hr />
+      </div>
+
+      {/* Cast Sliders*/}
+      <div className='my-8'>
+        <h2 className='text-gray-800 font-bold text-2xl mb-4'>
+          Cast And Crew
+        </h2>
+        <Slider {...settingsCast}>
+          {cast.map((castData) => (
+            <Cast image={castData.profile_path} castName={movie.original_name} role={movie.character} />
+          ))}
+        </Slider>
+      </div>
+
+
       <div className='my-8'>
         <hr />
       </div>
 
       <PosterSlider
-          config={settings}
-          title="BMS Exclusive"
-          posters={recommendedMovies}
-          isDark={false}
-        />
+        config={settings}
+        title="BMS Exclusive"
+        posters={recommendedMovies}
+        isDark={false}
+      />
 
     </div>
-    </>
-  )
+  </>
+)
 }
 
 export default MovieLayoutHoc(MoviePage)

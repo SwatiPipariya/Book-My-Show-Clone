@@ -3,13 +3,13 @@ import Slider from "react-slick"
 import PosterComponent from "../Poster/PosterComponent"
 
 const PosterSlider = (props) => {
-  const {posters, title, subtitle, isDark, config} = props  
+  const { posters, title, subtitle, isDark, config } = props
   const settings = {
-     infinite: true,
-     speed: 500,
-     slidesToShow: 5,
-     slidesToScroll: 4,
-     responsive: [
+    infinite: true,
+    speed: 500,
+    slidesToShow: 5,
+    slidesToScroll: 4,
+    responsive: [
       {
         breakpoint: 1024,
         settings: {
@@ -24,21 +24,28 @@ const PosterSlider = (props) => {
           slidesToScroll: 1,
         }
       },
-     
-     ]
+
+    ]
   }
 
   return (
-   <>
-    <div className='flex flex-col  items-start sm:ml-3 my-2'>
-      <h3 className={`text-2xl font-bold ${ isDark === true ? 'text-white' : 'text-black'}`}>
-        {title}
-      </h3>
-    </div>
-    <Slider {...settings}>
-      {posters.map((each, index)=><PosterComponent {...each} isDark={isDark} key={index}/>)}
-    </Slider>
-   </>
+    <>
+      <div className='flex flex-col  items-start sm:ml-3 my-2'>
+        <h3 className={`text-2xl font-bold ${isDark === true ? 'text-white' : 'text-black'}`}>
+          {title}
+        </h3>
+      </div>
+      {config && (
+        <Slider {...settings}>
+          {posters.map((each, index) => <PosterComponent {...each} isDark={isDark} key={index} />)}
+        </Slider>
+      )}
+      {!config && (
+        <Slider {...settings}>
+          {posters.map((each, index) => <PosterComponent {...each} isDark={isDark} key={index} />)}
+        </Slider>
+      )}
+    </>
   )
 }
 
