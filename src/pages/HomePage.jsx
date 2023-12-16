@@ -70,10 +70,10 @@ const HomePage = () => {
       </div>
       <div className='bg-premier-800 py-12'>
         <div className='container mx-auto px-4 md:px-12 my-8 flex flex-col gap-3' >
-          <div className='hidden md:flex'>
+          {/* <div className='hidden md:flex'> */}
             {/* <img src='https://th.bing.com/th?id=OIP.SOrqtMs1uYMm4lpxR5pdGQHaFO&w=297&h=210&c=8&rs=1&qlt=90&o=6&dpr=1.5&pid=3.1&rm=2' className='' alt='rupay' /> */}
-            <img src='' alt='rupay_pic' className='w-full h-full' />
-          </div>
+            {/* <img src='https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.com%2Ffree-photos-vectors%2Fred-play-icon&psig=AOvVaw33NkVloZZamBoStIDzeNtW&ust=1702802491474000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCPjm_ODHk4MDFQAAAAAdAAAAABAD' alt='rupay_pic' className='w-full h-full' /> */}
+          {/* </div> */}
           <PosterSlider
             title="Premiers"
             subtitle="Brand new releases every Friday"

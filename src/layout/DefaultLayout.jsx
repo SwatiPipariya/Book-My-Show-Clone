@@ -7,7 +7,9 @@ const DefaultLayoutHoc =
             <div>
                 <Navbar />
                 <Component {...props} />
-                <div>Footer</div>
+                {/* <div className='bg-gray-800 w-full h-full text-white'>
+                   
+                </div> */}
             </div>
         )
     }

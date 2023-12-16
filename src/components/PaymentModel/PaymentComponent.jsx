@@ -9,7 +9,21 @@ const PaymentComponent = ({ setIsOpen, isOpen, price }) => {
     }
 
     const launchRazorPay = () => {
-        
+        let options = {
+            key: "rzp_test_eq7IF36fAkt74f",
+            amount: price * 100,
+            currency: "INR",
+            name: "Book My Show",
+            description: "Mvie Purchase Or Rent",
+            handler: () => {
+                setIsOpen(false);
+                alert("Payment Successful")
+            },
+            theme: {color: "#c4242d"}
+        };
+
+        let razorPay = window.Razorpay(options);
+        razorPay.open();
     }
     return (
         <div>

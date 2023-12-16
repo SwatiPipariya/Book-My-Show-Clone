@@ -5,7 +5,7 @@ const EntertainmentCardComponent = (props) => {
   return (
     <>
      <div>
-       <img className='w-full h-full rounded-lg' src={props.src} alt='entertainment'/>
+       <img className='w-full h-full rounded-3xl px-3 ' src={props.src} alt='entertainment'/>
      </div>
     </>
   )
